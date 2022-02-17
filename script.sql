@@ -6,7 +6,7 @@ drop table genre CASCADE;
 drop table singer CASCADE;
 drop table singer_genre CASCADE; 
 drop table track CASCADE;
-drop table rack_collection CASCADE;
+drop table track_collection CASCADE;
 
 
 
@@ -46,16 +46,14 @@ create table if not exists album_singer (
 create table if not exists track (
 	id serial primary key,
 	track_name text unique not null,
-	duration numeric not null,
-	album_id int references album(id) 
+	duration int not null
 );
 
 
 create table if not exists collection (
 	id serial primary key,
 	track_name text unique not null,
-	release_year int not null,
-	track_id int references track(id) 
+	release_year int not null
 );
 
 create table if not exists track_collection (
