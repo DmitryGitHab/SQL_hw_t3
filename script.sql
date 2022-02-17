@@ -46,13 +46,14 @@ create table if not exists album_singer (
 create table if not exists track (
 	id serial primary key,
 	track_name text unique not null,
-	duration int not null
+	duration int not null,
+	album_id int references album(id) 
 );
 
 
 create table if not exists collection (
 	id serial primary key,
-	track_name text unique not null,
+	collection_name text unique not null,
 	release_year int not null
 );
 
@@ -61,4 +62,6 @@ create table if not exists track_collection (
 	collection_id int references collection(id), 
 	constraint track_collection_pk primary key (track_id, collection_id)
 );
+
+
 
